@@ -1,0 +1,65 @@
+import React, {useState} from 'react'
+import TextareaAutosize from '@material-ui/core/TextareaAutosize'
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import { Link } from 'react-router-dom';
+import { DateTimePicker, KeyboardDateTimePicker } from "@material-ui/pickers";
+import MenuItem from '@material-ui/core/MenuItem';
+import Button from '../components/button'
+const useStyles = makeStyles((theme) => ({
+  root: {
+      // border: '2px solid #0b1f51' ,
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+      
+    },
+  },
+}));
+
+
+const Contact = () => {
+  const classes = useStyles();    
+  const [values, setValues] = useState('');
+  const [selectedDate, handleDateChange] = useState(new Date("2021-01-01T00:00:00.000Z"));
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+  return (
+    <div> 
+      <div
+      style={{
+        display:'flex',
+        justifyContent:'center',
+        paddingTop:10
+      }}
+      >
+        <h4 style={{fontWeight:'bold', color:'#0b1f51'}}>Entre em contato conosco</h4>
+    </div>
+      
+      <div style={{width:'100%',justifyContent:'center',display:'flex'}}>
+       
+      <form className={classes.root} noValidate autoComplete="off">
+      <TextField id="outlined-basic" label="Nome"  value={values.name} onChange={handleChange('name')} variant="outlined" style={{backgroundColor:'#FFF'}}/>
+      <TextField id="outlined-basic" label="Email"  value={values.email} onChange={handleChange('email')} variant="outlined" style={{backgroundColor:'#FFF'}}/>
+      <TextField id="outlined-basic" label="Assunto"  value={values.assunto} onChange={handleChange('assunto')} variant="outlined" style={{backgroundColor:'#FFF'}}/>
+      <DateTimePicker
+        label="DateTimePicker"
+        inputVariant="outlined"
+        value={selectedDate}
+        onChange={handleDateChange}
+      />
+      <div >
+     
+            <Button text='Enviar'/>
+            <Button text='Enviar'/>
+      </div>
+            
+    </form>
+      </div>
+      
+    </div>
+  )
+}
+
+export default Contact

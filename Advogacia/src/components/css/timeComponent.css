@@ -1,0 +1,30 @@
+.colunas p{
+  margin-bottom: 0px;
+}
+
+.strongP{
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.colunas{
+  margin-bottom: 20px;
+}
+.linhas{
+  border-bottom: 1px solid #c5c5c5;
+  padding-bottom: 30px;
+  margin-top: 40px;
+}
+.icones{
+  cursor: pointer;
+  font-size: 40px !important;
+  margin:5px
+}
+
+.icones:hover{
+  transition-property: background-color, box-shadow;
+  transition-duration: 0.2s;
+  background-color: #e4e0e0;
+  border-radius: 30%;
+}

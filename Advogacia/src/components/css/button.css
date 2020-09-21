@@ -1,0 +1,15 @@
+
+.botao{
+  transition: 0.3s ease-in-out;
+  color: #BD8E02;
+  border: none;
+  background-color: #f7f7f7;
+}
+
+.botao:hover{
+  
+  background-color: #BD8E02;
+  /*color:#0b1f51;*/
+  color:#f7f7f7;
+  border:none
+}

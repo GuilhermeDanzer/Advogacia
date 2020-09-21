@@ -1,0 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+body{
+  /*background-color: #fed0d8;*/
+  background:#f7f7f7;
+  -webkit-font-smoothing:antialising;
+  font-family: 'Raleway', Arial, sans-serif;
+}
