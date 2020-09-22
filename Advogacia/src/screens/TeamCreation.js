@@ -38,6 +38,7 @@ const TeamCreation = () => {
   console.log(token_real)
   let history = useHistory();
   console.log(token.state.token)
+  console.log(state)
   
   if (window.localStorage.getItem('token')===null){
     history.push('/')

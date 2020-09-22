@@ -2,7 +2,7 @@ import axios from 'axios';
 const instance =  axios.create({
 
  //baseURL:'https://sabores-danzer.rj.r.appspot.com'
-  baseURL:'https://561a7425dcf3.ngrok.io'
+  baseURL:'http://0c980c87cb02.ngrok.io'
 
 });
 

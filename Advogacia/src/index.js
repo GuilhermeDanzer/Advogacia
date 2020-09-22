@@ -5,7 +5,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import "./index.css";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import App from "./App";
-
+import { Provider as ArticleProvider } from '../src/reducers/ArticleContext'
 import { Provider as AuthProvider } from '../src/reducers/AuthContext'
 import { Provider as TeamProvider } from '../src/reducers/TeamContext'
 import { Provider as EmailProvider } from '../src/reducers/EmailContext'
@@ -26,37 +26,40 @@ import './global.css'
 const routing = (
   <AuthProvider>
     <TeamProvider>
-      <EmailProvider>
-        <Router>
-          <div>
-            <Switch>
-              <Route path="/login" component={Login} />
-              <Route path='/admin' component={Admin}>
-                <MainAdmin>
-                  <Switch>
-                    <Route path="/login" component={Login} />
-                    <Route path="/admin/artigo" component={ArticleCreation}/>
-                    <Route path="/admin/equipe" component={TeamCreation} />
-                  </Switch>
-                </MainAdmin>
-              </Route>
-              <Route>
-                <Main>
-                  <Switch>
-                    <Route exact={true} path='/' component={App} />
-                    <Route path='/contato' component={Contact} />
-                    <Route path='/sites' component={Sites} />
-                    <Route path="/sobre" exact={true} component={About} />
-                    <Route path="/equipe" component={Team} />
-                    <Route path="/areas-de-atuacao" component={Expertise} />
-                    <Route path="/artigos" component={Article} />
-                  </Switch>
-                </Main>
-              </Route>
-            </Switch>
-          </div>
-        </Router>
-      </EmailProvider>
+      <ArticleProvider>
+
+        <EmailProvider>
+          <Router>
+            <div>
+              <Switch>
+                <Route path="/login" component={Login} />
+                <Route path='/admin' component={Admin}>
+                  <MainAdmin>
+                    <Switch>
+                      <Route path="/login" component={Login} />
+                      <Route path="/admin/artigo" component={ArticleCreation} />
+                      <Route path="/admin/equipe" component={TeamCreation} />
+                    </Switch>
+                  </MainAdmin>
+                </Route>
+                <Route>
+                  <Main>
+                    <Switch>
+                      <Route exact={true} path='/' component={App} />
+                      <Route path='/contato' component={Contact} />
+                      <Route path='/sites' component={Sites} />
+                      <Route path="/sobre" exact={true} component={About} />
+                      <Route path="/equipe" component={Team} />
+                      <Route path="/areas-de-atuacao" component={Expertise} />
+                      <Route path="/artigos" component={Article} />
+                    </Switch>
+                  </Main>
+                </Route>
+              </Switch>
+            </div>
+          </Router>
+        </EmailProvider>
+      </ArticleProvider>
     </TeamProvider>
   </AuthProvider>
 );

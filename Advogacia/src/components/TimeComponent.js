@@ -18,12 +18,12 @@ const TimeComponent = ({ admin, setValues, values, array, funcaoGet, funcaoDelet
         return (
     
             <div id="react-confirm-alert">
-              <div class="react-confirm-alert-overlay">
-                <div class="react-confirm-alert">
-                  <div class="react-confirm-alert-body">
+              <div className="react-confirm-alert-overlay">
+                <div className="react-confirm-alert">
+                  <div className="react-confirm-alert-body">
                     <h1>Confirmação de exclusão</h1>
                     Você deseja excluir o associado {name} {oab}?
-                    <div class="react-confirm-alert-button-group" style={{justifyContent:'space-evenly'}}>
+                    <div className="react-confirm-alert-button-group" style={{justifyContent:'space-evenly'}}>
                     <Button funcao={funcaoDelete} values={id} text='Sim' />
                     <Button funcao={onClose} text='Não' />
                     </div>

@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const requireAuth = require('../middleware/requireAuth')
-
+const arrayBufferToBuffer = require('arraybuffer-to-buffer');
 const Article = mongoose.model('Article')
 const router = express.Router()
 
@@ -42,7 +42,7 @@ router.post('/article/edit',async(req,res)=>{
         if (err){
           res.status(422).send(err)
         }else{
-          res.send(result)
+          res.send({msg:'Artigo Publicado com sucesso'})
         }
       })
 
@@ -54,6 +54,10 @@ router.post('/article/edit',async(req,res)=>{
 router.post('/article', async (req,res) =>{
   const {title,resume,link} = req.body
 
+
+
+
+
   if (!title||!resume||!link){
     return res
           .status(422)
@@ -63,7 +67,7 @@ router.post('/article', async (req,res) =>{
   try{
     const article = new Article({title,resume,link})
     await article.save()
-    res.send(article)
+    res.send({msg:'Artigo cadastrado com sucesso'})
   }catch (err){
     return res
           .status(422)

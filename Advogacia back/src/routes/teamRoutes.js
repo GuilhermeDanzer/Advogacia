@@ -61,7 +61,7 @@ router.post('/team',requireAuth, async (req,res) =>{
   }
 
   try{
-    console.log('opa')
+
     const team = new Team({name,cep,oab,tel,email,city,state,number,address,complement,area,academicFormation,profissionalExperience})
     await team.save()
     console.log('asioajfsioas')

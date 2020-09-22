@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react'
 import Button from '../components/button'
 import { makeStyles } from '@material-ui/core/styles';
-import {Context as TeamContext} from '../reducers/TeamContext'
+import {Context as ArticleContext} from '../reducers/ArticleContext'
 import {Context as AuthContext} from '../reducers/AuthContext'
 import ArticleForm from '../components/ArticleForm'
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import TimeComponent from '../components/TimeComponent'
+import ArticleComponent from '../components/ArticleComponent'
 import './css/TeamCreation.css'
 import { useHistory } from "react-router-dom";
 
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 const TeamCreation = () => {
 
 
-
+  const {state,getArticle, postArticle, editArticle,deleteArticle} = useContext(ArticleContext)
   const classes = useStyles();
   const token = useContext(AuthContext)
   let history = useHistory();
@@ -81,7 +81,7 @@ const TeamCreation = () => {
       </div>
       <div>
 
-       {values.checkedB? <ArticleForm edit={values.edit} handlechange={handleChange} funcao={values.edit?'':'postTeam'} values={values} setValues={setValues} classes={classes} />:<TimeComponent array={[]}funcaoGet={'getTeam'} funcaoDelete={'deleteTeam'} values={values} setValues={setValues} admin={true}/>}
+       {values.checkedB? <ArticleForm edit={values.edit} handlechange={handleChange} funcao={values.edit?editArticle:postArticle} values={values} setValues={setValues} classes={classes} />:<ArticleComponent array={state.article}funcaoGet={getArticle} funcaoDelete={deleteArticle} values={values} setValues={setValues} admin={true}/>}
 
       </div>
     </div>

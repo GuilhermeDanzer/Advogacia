@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+const bson = require('bson');
 
 const articleSchema = new mongoose.Schema({
 
@@ -12,7 +12,7 @@ const articleSchema = new mongoose.Schema({
     required:true
   },
   link:{
-    type:String,
+    type:Buffer,
     required:true
   }
 })
