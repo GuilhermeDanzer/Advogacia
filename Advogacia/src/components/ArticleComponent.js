@@ -76,7 +76,7 @@ const ArticleComponent = ({ admin, setValues, values, array, funcaoGet, funcaoDe
                 <h4>{artigo.title}</h4>
                 <p>{artigo.resume}</p>
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  <Button text='Leia o artigo completo' funcao={()=>abrirPdf(artigo.link)} values={artigo.link} />
+                  <Button text='Leia o artigo completo' funcao={()=>abrirPdf(artigo.url)} values={artigo.link} />
                 </div>
 
               </div>

@@ -33,8 +33,7 @@ const TeamCreation = () => {
   const classes = useStyles();
   const token = useContext(AuthContext)
   let history = useHistory();
-  console.log(token.state.token)
-  
+
   if (token.state.token ===null & window.localStorage.getItem('token')=== undefined ||window.localStorage.getItem('token')=== null){
     history.push('/')
   }

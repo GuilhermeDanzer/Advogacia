@@ -5,7 +5,7 @@ const requireAuth = require('../middleware/requireAuth')
 const Team = mongoose.model('Team')
 const router = express.Router()
 
-console.log('as')
+
 router.get('/team', async (req,res)=>{
   try{
     const team = await Team.find()

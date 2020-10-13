@@ -1,22 +1,16 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import './css/Article.css'
 import Button from '../components/button'
+
+import {Context as ArticleContext} from '../reducers/ArticleContext'
+import ArticleComponent from '../components/ArticleComponent'
 const Article = () => {
+  const {getArticle,state} = useContext(ArticleContext)
 
-  const link = 'Artigo aberto'
-  const displayAlert = (link) =>{
-     alert(link)
-  }
-  console.log('a')
   return (
-    <div>
-      <div className='divContainer'>
-        <div className='firstDiv'>
-     
 
-        </div>
-      </div>
-    </div>
+      <ArticleComponent admin={false} funcaoGet={getArticle} array={state.article} values=''setValues=''/>
+
   )
 }
 

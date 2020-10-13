@@ -1,20 +1,37 @@
 const mongoose = require('mongoose')
-const bson = require('bson');
+const aws = require('aws-sdk')
+
+const s3 = new aws.S3()
+
 
 const articleSchema = new mongoose.Schema({
 
   title:{
     type:String,
-    required:true,
-  },
+
+},
   resume:{
     type:String,
-    required:true
+
   },
-  link:{
-    type:Buffer,
-    required:true
-  }
+  name:String,
+  size: Number,
+  key: String,
+  url: String,
+  createdAt:{
+    type:Date,
+    default: Date.now
+  } 
 })
+articleSchema.pre('remove',function(){
+
+  console.log(this.key)
+  return s3.deleteObject({
+    Bucket:'mypdfupload',
+    Key:this.key,
+  }).promise()
+})
+
+
 
 mongoose.model('Article',articleSchema)

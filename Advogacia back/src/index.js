@@ -1,7 +1,9 @@
+require('dotenv').config()
 require('./models/User')
 require('./models/Team')
 require('./models/Article')
 
+const morgan = require('morgan')
 const express = require('express')
 const mongoose = require('mongoose')
 var cors = require('cors')
@@ -19,7 +21,7 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
-
+app.use(morgan('use'))
 app.use(bodyParser.json())
 
 app.get('/',(req,res) =>{

@@ -3,7 +3,11 @@ import api from '../api/api'
 
 
 
-
+const config = {
+  headers: {
+      'content-type': 'multipart/form-data',
+  }
+};
 const articleReducer = (state,action) =>{
   switch(action.type){
     case 'postArticle':
@@ -18,7 +22,7 @@ const articleReducer = (state,action) =>{
 }
 const getArticle = dispatch => async () =>{
   try {
-    const response = await api.get('/article',)
+    const response = await api.get('/article')
     dispatch({type:'getArticle',payload:response.data})
     
     //navigate('Show')
@@ -42,8 +46,14 @@ const editArticle = dispatch => async (valores) =>{
 
 const postArticle = dispatch => async (valores) =>{
   try {
+    const {title,resume,file} = valores
 
-    const response = await api.post('/article',valores)
+    const data = new FormData()
+    data.append('file',file)
+    data.append('title',title)
+    data.append('resume',resume)
+
+    const response = await api.post('/article/cdn',data,config)
     dispatch({type:'postArticle',payload:response.data})
     alert(response.data.msg)
     window.location.reload()
@@ -55,7 +65,7 @@ const postArticle = dispatch => async (valores) =>{
 }
 const deleteArticle = dispatch => async (valores) =>{
   try {
-    const response = await api.post('/article/delete',{_id:valores})
+    const response = await api.delete(`/article/${valores}`)
     dispatch({type:'deletePost',payload:response.data})
     alert(response.data.msg)
     window.location.reload()
