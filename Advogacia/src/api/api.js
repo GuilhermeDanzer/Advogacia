@@ -1,8 +1,7 @@
 import axios from 'axios';
 const instance =  axios.create({
 
- //baseURL:'https://sabores-danzer.rj.r.appspot.com'
-  baseURL:'https://30ab7ddb3cff.ngrok.io'
+ baseURL:ENV[API_URL]
 
 });
 
